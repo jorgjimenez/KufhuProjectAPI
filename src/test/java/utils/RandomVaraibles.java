@@ -79,5 +79,6 @@ public class RandomVaraibles {
         }
         return priority;
     }
+    //TODO random status
 }
 

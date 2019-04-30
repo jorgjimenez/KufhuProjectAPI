@@ -7,8 +7,12 @@ import utils.Propertie;
 public class APIManager {
 
      public Response post(RequestSpecification requestSpecification){
-          return requestSpecification.when().port(80).post();
+          return requestSpecification.when().port(Integer.parseInt(Propertie.getValueByKey("port"))).post();
+     }
+     public Response delete(RequestSpecification requestSpecification){
+          return requestSpecification.when().port(Integer.parseInt(Propertie.getValueByKey("port"))).delete();
      }
      }
+
 
 

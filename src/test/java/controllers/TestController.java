@@ -1,35 +1,30 @@
 package controllers;
-import helpers.CreateJson;
+import helpers.JsonTicket;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import utils.DataSession;
 import utils.Propertie;
 
 public class TestController {
     protected Response response;
-    protected RequestSpecification requestSpecification;
+    protected static RequestSpecification requestSpecification;
     protected APIManager apiManager = new APIManager();
-    private CreateJson createJson= new CreateJson();
+    private JsonTicket jsonTicket = new JsonTicket();
 
-    public void baseURL() {
-        requestSpecification.baseUri(Propertie.getValueByKey("baseUrl"));
-    }
 
-    public void contentType(String contentType) {
-        requestSpecification = RestAssured.given().contentType(contentType);
-    }
-
-    public void endpointTicket(){
-        requestSpecification.basePath(Propertie.getValueByKey("basePathTickets"));
-    }
 
     public void creatTicket(String position){
 
-        requestSpecification.with().body(createJson.createTicket(position));
+        requestSpecification.with().body(jsonTicket.createTicket(position));
         response=apiManager.post(requestSpecification);
     }
-    public Response getResponse() {
 
+    public void deleteTicket(){
+        String id=DataSession.getFromSession(DataSession.Data.id);
+        response=apiManager.delete(requestSpecification);
+    }
+    public Response getResponse() {
         return response;
     }
 

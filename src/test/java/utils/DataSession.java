@@ -8,7 +8,20 @@ public class DataSession {
 
     public enum Data {
 
-        NAME("name");
+        jsonticket("jsonticket"),
+        id("id"),
+        title("title"),
+        projectName("projectName"),
+        projectStartDate("projectStartDate"),
+        clientName("clientName"),
+        agu("agu"),
+        du("du"),
+        grade("grade"),
+        priority("priority"),
+        positionBrief("positionBrief"),
+        isBench("isBench"),
+        projectCode("projectCode"),
+        status("status");
         private String value;
 
         Data(String value) {
